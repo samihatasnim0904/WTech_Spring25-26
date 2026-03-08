@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Contact Form</title>
-    <link rel="stylesheet" href="..\Design\Style.css">
+    <link rel="stylesheet" href="../Design/Style.css">
 </head>
 
 <body>
@@ -10,17 +10,19 @@
 <div class="container">
     <h1>Contact us</h1>
 
-    <form id="contactForm">
+    <form id="contactForm"  onsubmit="return collet_data()">
 
         <table>
 
-            <tr><td><label>FIRST NAME</label><br>
-                    <input type="text" id="fname">
+            <tr>
+                <td>
+                    <label>FIRST NAME</label><br>
+                    <input type="text" id="fname" onsubmit="collet_data()">
                 </td>
 
                 <td>
                     <label>LAST NAME</label><br>
-                    <input type="text" id="lname">
+                    <input type="text" id="lname" >
                 </td>
             </tr>
 
@@ -44,7 +46,7 @@
             </tr>
 
             <tr>
-                <td colspan="2" class="center">
+                <td colspan="2" style="text-align:center;">
                     <button type="submit">Submit</button>
                 </td>
             </tr>
@@ -54,7 +56,7 @@
     </form>
 </div>
 
-<script src="script.js"></script>
+<script src="../JavaScript/Script.js"></script>
 
 </body>
 </html>
