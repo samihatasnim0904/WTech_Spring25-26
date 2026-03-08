@@ -11,7 +11,7 @@ form{
     border-radius: 10px;
     background-color: rgb(229, 229, 231);
 }
-.container{
+.box{
     width:400px;
     margin:100px auto;
     background:white;
@@ -41,7 +41,7 @@ input, textarea{
 }
 
 button{
-    background:#22382d;
+    background:#2f4f3f;
     color:white;
     padding:10px 25px;
     border:none;
