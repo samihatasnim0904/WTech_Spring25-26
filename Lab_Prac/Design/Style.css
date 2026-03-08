@@ -30,11 +30,13 @@ table{
 
 input, textarea{
     width:95%;
-    padding:8px;
+    padding:5px;
     margin-top:5px;
     margin-bottom:10px;
     border:1px solid #ffffff;
 }
+
+
 
 .center{
     text-align:center;
