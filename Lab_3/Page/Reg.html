@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <title> Registration Page </title>
+    <body>
+        <link rel="stylesheet" href="..\Design\Style.css">
+    <head>
+        <h1> Patient Registration (Adnmission) </h1>
+    </head>
+
+    <script src="..\JavaScript\Script.js">
+
+    </script>
+
+    <div class="navbar">
+        <a href="www.aiub.edu">AIUB Website</a>
+    </div>
+
+    <form onsubmit="return collect_data()">
+        <table> 
+            <tr><label for ="Name">Patient Name: </label></tr>
+            <td><input type ="text" id="Name" name ="PatientName" placeholder = "Enter the Name" onclick= "return collect_data()"><br><br></td>
+        </table>
+
+        
+        <label for ="Name">Patient Name: </label>
+        <input type ="text" id="Name" name ="PatientName" placeholder = "Enter the Name"> <br><br>
+
+        <label for="Age">Age:</label>
+        <input type="number" id="Age" name="PatientAge"><br><br>
+
+        <label for="DOB"> Date of Birth: </label>
+        <input type="date" id="DOB" name ="PatientDOB"> <br><br>
+
+        <label for="GenderMale"> Male: </label>
+        <input type = "radio" id="GenderMale" name="Gender" value="Male">
+        
+        <br><br>
+
+        <label for="GenderFemale"> Female: </label>
+        <input type = "radio" id="GenderFemale" name="Gender" value="Female">
+
+        
+
+        <br><br>
+
+        <label for="Address">Address:</label>
+        <textarea id="Address" name ="PatientAddress" rows="4" cols="30" placeholder="Enter The Address" onkeyup="return get_textarea()"></textarea>
+
+        <br><br>
+
+        <label for="InsertFiles">Patient Medical Report: </label>
+        <input type ="file" id="InsertFiles" name="PatientFile">
+
+        <br><br>
+
+        <label for ="Doctor">Prefered Doctor Lists: </label>
+       
+        <select>
+            <option values="Default"> </option>
+            <option values="Cardiac"> Cardiac</option>
+            <option values="Skin"> Skin </option>
+        </select>
+
+        <br><br>
+<!-- 
+        <label for="Submit">Submit Info: </label>
+        <input type="submit" id="submit" name="DataSubmit"> -->
+
+        <button id ="keysubmit" onclick="return submit_key()"> Data Submit</button>
+        
+
+    </form>
+</body>
+</html>
