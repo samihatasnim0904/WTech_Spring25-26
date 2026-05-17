@@ -1,0 +1,32 @@
+<?php
+
+/* START SESSION SAFELY */
+function start_session(){
+    if(session_status() === PHP_SESSION_NONE){
+        session_start();
+    }
+}
+
+/* ADMIN ONLY ACCESS */
+function require_admin(){
+
+    start_session();
+
+    // check role
+    if(!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin'){
+        header("Location: ../View/loginView.php");
+        exit();
+    }
+}
+
+/* LOGIN REQUIRED (OPTIONAL) */
+function require_login(){
+
+    start_session();
+
+    if(!isset($_SESSION['user_id'])){
+        header("Location: ../View/loginView.php");
+        exit();
+    }
+}
+?>
