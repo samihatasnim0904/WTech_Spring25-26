@@ -1,7 +1,7 @@
 <?php
 function require_admin() {
     if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-        header('Location: /product/catalogue');
+        header('Location: /login');
         exit();
     }
 }

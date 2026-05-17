@@ -10,11 +10,18 @@ class ProductController {
     
     public function catalogue() {
         $products = $this->productModel->getAllProducts();
+        if (empty($products)) {
+            echo "No products found!";
+        }
         include __DIR__ . '/../views/products/catalogue.php';
     }
     
     public function detail($productId) {
         $product = $this->productModel->getProductById($productId);
+        if (!$product) {
+            echo "Product not found!";
+            return;
+        }
         $reviews = $this->reviewModel->getProductReviews($productId);
         $avgRating = $this->reviewModel->getAverageRating($productId);
         include __DIR__ . '/../views/products/detail.php';

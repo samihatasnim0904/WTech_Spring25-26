@@ -1,33 +1,11 @@
 <?php
 class Database {
     private static $instance = null;
-    private $mockData;
+    private $conn;
     
     private function __construct() {
-        // Initialize mock data
-        $this->mockData = [
-            'orders' => [
-                ['id' => 101, 'user_id' => 1001, 'date' => '2025-05-15', 'total' => 139.98, 'status' => 'Delivered'],
-                ['id' => 102, 'user_id' => 1001, 'date' => '2025-05-10', 'total' => 89.99, 'status' => 'Shipped'],
-                ['id' => 103, 'user_id' => 1001, 'date' => '2025-05-01', 'total' => 79.99, 'status' => 'Delivered'],
-                ['id' => 104, 'user_id' => 1002, 'date' => '2025-05-12', 'total' => 29.99, 'status' => 'Pending'],
-                ['id' => 105, 'user_id' => 1001, 'date' => '2025-05-18', 'total' => 49.99, 'status' => 'Processing'],
-                ['id' => 106, 'user_id' => 1001, 'date' => '2025-05-20', 'total' => 119.97, 'status' => 'Delivered']
-            ],
-            'order_items' => [
-                101 => [['product_id' => 1, 'name' => 'Wireless Headphones', 'quantity' => 2, 'unit_price' => 49.99]],
-                102 => [['product_id' => 2, 'name' => 'Smart Watch', 'quantity' => 1, 'unit_price' => 89.99]],
-                103 => [['product_id' => 4, 'name' => 'Mechanical Keyboard', 'quantity' => 1, 'unit_price' => 79.99]],
-                105 => [['product_id' => 1, 'name' => 'Wireless Headphones', 'quantity' => 1, 'unit_price' => 49.99]],
-                106 => [['product_id' => 2, 'name' => 'Smart Watch', 'quantity' => 1, 'unit_price' => 89.99], ['product_id' => 3, 'name' => 'USB-C Hub', 'quantity' => 1, 'unit_price' => 29.99]]
-            ],
-            'products' => [
-                ['id' => 1, 'name' => 'Wireless Headphones', 'price' => 49.99, 'stock' => 12, 'image' => '🎧', 'description' => 'High-quality wireless headphones with noise cancellation'],
-                ['id' => 2, 'name' => 'Smart Watch', 'price' => 89.99, 'stock' => 5, 'image' => '⌚', 'description' => 'Fitness tracker with heart rate monitor'],
-                ['id' => 3, 'name' => 'USB-C Hub', 'price' => 29.99, 'stock' => 3, 'image' => '🔌', 'description' => '7-in-1 USB-C multiport adapter'],
-                ['id' => 4, 'name' => 'Mechanical Keyboard', 'price' => 79.99, 'stock' => 7, 'image' => '⌨️', 'description' => 'RGB mechanical gaming keyboard']
-            ]
-        ];
+        // Simulated database connection with garbage values
+        $this->conn = true; // Mock connection
     }
     
     public static function getInstance() {
@@ -37,12 +15,39 @@ class Database {
         return self::$instance;
     }
     
-    public function getMockData($key) {
-        return isset($this->mockData[$key]) ? $this->mockData[$key] : [];
+    public function getConnection() {
+        return $this->conn;
     }
     
-    public function getOrderItems($orderId) {
-        return isset($this->mockData['order_items'][$orderId]) ? $this->mockData['order_items'][$orderId] : [];
+    // Mock query method for demonstration
+    public function query($sql, $params = []) {
+        // Return mock data based on SQL
+        return $this->getMockData($sql);
+    }
+    
+    private function getMockData($sql) {
+        // Garbage values database simulation
+        $mockOrders = [
+            ['id' => 101, 'user_id' => 1001, 'date' => '2025-05-15', 'total' => 139.98, 'status' => 'Delivered'],
+            ['id' => 102, 'user_id' => 1001, 'date' => '2025-05-10', 'total' => 89.99, 'status' => 'Shipped'],
+            ['id' => 103, 'user_id' => 1001, 'date' => '2025-05-01', 'total' => 79.99, 'status' => 'Delivered'],
+            ['id' => 104, 'user_id' => 1002, 'date' => '2025-05-12', 'total' => 29.99, 'status' => 'Pending'],
+            ['id' => 105, 'user_id' => 1001, 'date' => '2025-05-18', 'total' => 49.99, 'status' => 'Processing']
+        ];
+        
+        $mockProducts = [
+            ['id' => 1, 'name' => 'Wireless Headphones', 'price' => 49.99, 'avg_rating' => 4.5],
+            ['id' => 2, 'name' => 'Smart Watch', 'price' => 89.99, 'avg_rating' => 4.2],
+            ['id' => 3, 'name' => 'USB-C Hub', 'price' => 29.99, 'avg_rating' => 4.8],
+            ['id' => 4, 'name' => 'Mechanical Keyboard', 'price' => 79.99, 'avg_rating' => 4.0]
+        ];
+        
+        if (strpos($sql, 'orders') !== false) {
+            return $mockOrders;
+        } elseif (strpos($sql, 'products') !== false) {
+            return $mockProducts;
+        }
+        return [];
     }
 }
 ?>

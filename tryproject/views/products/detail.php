@@ -32,6 +32,6 @@
     </div>
 </div>
 
-<a href="product/catalogue" class="back-link">← Back to Catalogue</a>
+<a href="index.php?route=product/catalogue" class="back-link">← Back to Catalogue</a>
 
 <?php include __DIR__ . '/../partials/footer.php'; ?>

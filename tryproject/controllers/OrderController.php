@@ -9,7 +9,7 @@ class OrderController {
     public function myOrders() {
         $userId = $_SESSION['user_id'];
         $orders = $this->orderModel->getUserOrders($userId);
-        include __DIR__ . '/../views/orders/my_orders.php';
+        require_once 'views/orders/my_orders.php';
     }
     
     public function orderDetail($orderId) {
@@ -21,7 +21,7 @@ class OrderController {
     
     public function adminOrders() {
         $orders = $this->orderModel->getAllOrders();
-        include __DIR__ . '/../views/admin/orders.php';
+        require_once 'views/admin/orders.php';
     }
     
     public function updateStatus($orderId, $status) {

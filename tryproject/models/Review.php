@@ -3,8 +3,7 @@ class Review {
     private static $reviews = [
         ['id' => 1, 'product_id' => 1, 'user_id' => 1001, 'rating' => 5, 'review_text' => 'Amazing sound quality!', 'created_at' => '2025-05-16'],
         ['id' => 2, 'product_id' => 1, 'user_id' => 1002, 'rating' => 4, 'review_text' => 'Good but bass heavy', 'created_at' => '2025-05-14'],
-        ['id' => 3, 'product_id' => 2, 'user_id' => 1001, 'rating' => 4, 'review_text' => 'Nice fitness tracker', 'created_at' => '2025-05-11'],
-        ['id' => 4, 'product_id' => 4, 'user_id' => 1001, 'rating' => 5, 'review_text' => 'Perfect tactile feel', 'created_at' => '2025-05-02']
+        ['id' => 3, 'product_id' => 2, 'user_id' => 1001, 'rating' => 4, 'review_text' => 'Nice fitness tracker', 'created_at' => '2025-05-11']
     ];
     
     public function getProductReviews($productId) {
@@ -14,7 +13,7 @@ class Review {
                 $result[] = $review;
             }
         }
-        return array_reverse($result);
+        return $result;
     }
     
     public function addReview($productId, $userId, $rating, $reviewText) {
@@ -27,10 +26,10 @@ class Review {
         
         $newReview = [
             'id' => count(self::$reviews) + 1,
-            'product_id' => (int)$productId,
-            'user_id' => (int)$userId,
-            'rating' => (int)$rating,
-            'review_text' => htmlspecialchars($reviewText),
+            'product_id' => $productId,
+            'user_id' => $userId,
+            'rating' => $rating,
+            'review_text' => $reviewText,
             'created_at' => date('Y-m-d')
         ];
         self::$reviews[] = $newReview;
