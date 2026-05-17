@@ -26,4 +26,5 @@ if (preg_match('/\/api\/orders\/(\d+)/', $request_uri, $matches)) {
 } else {
     json_response(['error' => 'Endpoint not found'], 404);
 }
+
 ?>
