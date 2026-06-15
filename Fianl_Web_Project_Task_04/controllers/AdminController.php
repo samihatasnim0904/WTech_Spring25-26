@@ -10,6 +10,7 @@ class AdminController{
 
         $this->orderModel = new Order();
 
+        
     }
 
     public function orders(){
